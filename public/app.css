@@ -7,10 +7,22 @@
 }
 
 body{
-    font-family: monospace;
+    font-family: 'Roboto Slab', serif;
     background-color: var(--fourth-color);
     color: var(--secondary-color);
 }
+
+@media screen and (min-width: 600px){
+    .optionsDiv{
+        margin-top: 15vh;
+    }
+}
+@media screen and (max-width: 600px){
+    .optionsDiv{
+        height: 100vh;
+    }
+}
+
 .optionsDiv{
     display: flex;
 
@@ -19,10 +31,9 @@ body{
     align-content: stretch;
     flex-direction: row;
 
-    margin-top: 15vh;
     background-color: var(--third-color);
     padding: 10vh 10vw;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .optionsBtn{
@@ -36,7 +47,7 @@ body{
 
     padding: 2vh;
     margin: 2vh 2vw;
-    border-radius: 2;
+    border-radius: 2px;
     transition: transform 0.25s, background-color 0.25s, color 0.25s, border 0.25s, box-shadow 0.25s;
     min-width: 15vw;
     flex-grow: 1;
