@@ -70,7 +70,6 @@ body{
     color: var(--primary-color);
     text-shadow: 2px -2px var(--red-shadow);
     text-transform: uppercase;
-    font-size: 2.4em;
     letter-spacing: 3px;
     max-width: 80vw;
 }
