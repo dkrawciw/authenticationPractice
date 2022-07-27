@@ -1,5 +1,10 @@
 <%- include('partials/header') -%>
 
-    <h1>Howdy DO!</h1>
-
+<main class="container optionsDiv">
+    <h2 id="authIntro">Pick a Type of Authentication</h2>
+    <% for (let opt in options) { %>
+        <button class="btn optionsBtn"><%- options[opt].name %></button>
+    <% } %>
+</main>
+    
 <%- include('partials/footer') -%>

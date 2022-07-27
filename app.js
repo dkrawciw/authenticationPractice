@@ -2,12 +2,32 @@ const express = require('express'),
       app = express(),
       customBasicAuth = require('./routes/customBasicAuth.js');
 
+// Placeholder
+let options = [
+    {
+        name: 'Weak Authentication',
+        route: '/weakAuth'
+    },
+    {
+        name: 'Hashed Authentication',
+        route: '/hashedAuth'
+    },
+    {
+        name: 'Hashed and Salted Authentication',
+        route: '/hashedAndSaltedAuth'
+    },
+    {
+        name: 'OAuth',
+        route: '/oauth'
+    }
+]
+
 app.set('view engine', 'ejs');
 app.use( express.static('public') );
 
 // Landing Page
 app.get('/', (req, res) => {
-    res.render('index.ejs')
+    res.render('index.ejs', {options: options})
 })
 
 // Including Routes
