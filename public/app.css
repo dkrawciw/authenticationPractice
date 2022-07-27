@@ -13,46 +13,85 @@ body{
 }
 
 @media screen and (min-width: 600px){
-    .optionsDiv{
+    .signatureDiv{
         margin-top: 15vh;
     }
 }
+
+@media screen and (min-width: 800px){
+    .authDiv{
+        width: 50%;
+    }
+}
+
 @media screen and (max-width: 600px){
-    .optionsDiv{
+    .signatureDiv{
         height: 100vh;
     }
 }
 
-.optionsDiv{
+.signatureDiv{
     display: flex;
-
-    justify-content: center;
     flex-wrap: wrap;
-    align-content: stretch;
-    flex-direction: row;
 
     background-color: var(--third-color);
     padding: 10vh 10vw;
     border-radius: 5px;
 }
 
-.optionsBtn{
-    display: flex;
+/*
+Section to define style elements specific to authorization
+*/
+.authDiv form{
+    width: 100%;
+}
+.authDiv input {
+    background-color: var(--fourth-color);
+    border: none;
+    border-radius: 2px;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+}
+.authDiv input:focus{
+    background-color: var(--primary-color);
+    color: var(--fourth-color);
+    box-shadow: 2px -2px var(--red-shadow);
+}
+.authDiv label{
+    width: 70%;
+}
+.authDiv button{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.authDiv a{
+    transition: color 0.25s;
+}
+.authDiv a:hover{
+    color: var(--fourth-color);
+    cursor: pointer;
+}
 
+.optionsDiv{
+    justify-content: center;
+    align-content: stretch;
+    flex-direction: row;
+}
+
+/*
+Making the signature look of the buttons
+*/
+.signatureBtn{
     border: 2px solid var(--fourth-color);
     background-color: var(--fourth-color);
     color: var(--third-color);
 
     text-transform: uppercase;
 
-    padding: 2vh;
-    margin: 2vh 2vw;
     border-radius: 2px;
     transition: transform 0.25s, background-color 0.25s, color 0.25s, border 0.25s, box-shadow 0.25s;
     min-width: 15vw;
-    flex-grow: 1;
 }
-.optionsBtn:hover{
+.signatureBtn:hover{
     cursor: pointer;
     transform: translate(4px, 4px);
     background-color: var(--primary-color);
@@ -60,8 +99,16 @@ body{
     border: 2px solid var(--primary-color);
     box-shadow: 4px -4px var(--red-shadow);
 }
-.optionsBtn:active{
+.signatureBtn:active{
     transform: translate(-4px, -4px);
+}
+
+.optionsBtn{
+    display: flex;
+    flex-grow: 1;
+
+    padding: 2vh;
+    margin: 2vh 2vw;
 }
 
 #authIntro{
