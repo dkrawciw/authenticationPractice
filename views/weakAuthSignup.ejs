@@ -1,0 +1,19 @@
+<%- include('partials/header') -%>
+
+<main class="container optionsDiv">
+    <h2 id="authIntro">Weak Authentication Signup</h2>
+    <form action="/weakAuth/signup" method="POST">
+        <label>Username</label>
+        <input>
+
+        <label>Password</label>
+        <input>
+        <button type="submit" class="btn optionsBtn">Sign Up</button>
+    </form>
+    <div>
+        <p>Already Have An Account?</p>
+        <button class="btn" onclick="window.location='/weakAuth/login'">Login</button>
+    </div>
+</main>
+    
+<%- include('partials/footer') -%>

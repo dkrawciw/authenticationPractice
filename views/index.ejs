@@ -3,7 +3,7 @@
 <main class="container optionsDiv">
     <h2 id="authIntro">Pick a Type of Authentication</h2>
     <% for (let opt in options) { %>
-        <button class="btn optionsBtn"><%- options[opt].name %></button>
+        <button type="button" class="btn optionsBtn" onclick="window.location='<%- options[opt].route %>/login'"><%- options[opt].name %></button>
     <% } %>
 </main>
     

@@ -1,6 +1,6 @@
 const express = require('express'),
       app = express(),
-      customBasicAuth = require('./routes/customBasicAuth.js');
+      weakAuth = require('./routes/weakAuth.js');
 
 // Placeholder
 let options = [
@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 })
 
 // Including Routes
-app.use('/customBasicAuth', customBasicAuth)
+app.use(weakAuth)
 
 // Define the port to listen on
 app.listen(8080, () => {
