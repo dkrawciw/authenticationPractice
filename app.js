@@ -37,6 +37,11 @@ app.get('/', (req, res) => {
 app.use(passAuth)
 app.use(smsAuth)
 
+// Default Loading page
+app.get('/*', (req, res) => {
+    res.render("defaultPage.ejs")
+})
+
 // Define the port to listen on
 app.listen(8080, () => {
     console.log("Running Authentication App...")

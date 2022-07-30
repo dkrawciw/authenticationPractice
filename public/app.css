@@ -120,3 +120,7 @@ Making the signature look of the buttons
     letter-spacing: 3px;
     max-width: 80vw;
 }
+
+.centeredSeparated{
+    width: 100%;
+}
