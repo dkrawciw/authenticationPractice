@@ -1,6 +1,7 @@
 const express = require('express'),
       router = express.Router();
 
+
 // Setting up routes for logging in
 router.get('/passAuth/login', (req, res) => {
     res.render('passAuth/passAuthLogin.ejs')

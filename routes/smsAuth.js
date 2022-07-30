@@ -5,6 +5,7 @@ router.get('/smsAuth/login', (req, res) => {
     res.render('smsAuth/smsAuthLogin.ejs')
 })
 router.post('/smsAuth/login', (req, res) => {
+    console.log('Phone Num: ', req.body.phoneNum)
     res.redirect('/smsAuth/verification')
 })
 

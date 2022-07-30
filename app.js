@@ -1,5 +1,6 @@
 const express = require('express'),
-      app = express();
+      app = express(),
+      bodyParser = require('body-parser');
 
 // Pieces necessary to run the server on https
 const fs = require('fs'),
@@ -37,8 +38,11 @@ let options = [
     }
 ]
 
+// Important middlewares
 app.set('view engine', 'ejs');
 app.use( express.static('public') );
+app.use(bodyParser.urlencoded({ extended: false }))
+
 
 // Landing Page
 app.get('/', (req, res) => {
