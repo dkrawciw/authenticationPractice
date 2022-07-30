@@ -1,12 +1,12 @@
 const express = require('express'),
       app = express(),
-      weakAuth = require('./routes/weakAuth.js');
+      passAuth = require('./routes/passAuth.js');
 
 // Placeholder
 let options = [
     {
-        name: 'Weak Authentication',
-        route: '/weakAuth'
+        name: 'Password Authentication',
+        route: '/passAuth'
     },
     {
         name: 'Hashed Authentication',
@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 })
 
 // Including Routes
-app.use(weakAuth)
+app.use(passAuth)
 
 // Define the port to listen on
 app.listen(8080, () => {

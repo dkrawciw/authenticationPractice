@@ -1,0 +1,19 @@
+<%- include('../partials/header') -%>
+
+<main class="container signatureDiv authDiv">
+    <h2 id="authIntro">Password Authentication Signup</h2>
+    <form action="/passAuth/signup" method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" class="form-control">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control">
+
+        <button type="submit" class="btn signatureBtn">Sign Up</button>
+    </form>
+    <div>
+        <p><a onclick="window.location='/passAuth/login'">Already Have An Account? Login</a></p>
+    </div>
+</main>
+    
+<%- include('../partials/footer') -%>
