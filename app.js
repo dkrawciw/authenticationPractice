@@ -1,16 +1,19 @@
 const express = require('express'),
-      app = express(),
-      passAuth = require('./routes/passAuth.js');
+      app = express();
+
+// Connected JS pages
+const passAuth = require('./routes/passAuth.js'),
+      smsAuth = require('./routes/smsAuth.js');
 
 // Placeholder
 let options = [
     {
         name: 'Password Authentication',
-        route: '/passAuth'
+        route: '/passAuth/login'
     },
     {
-        name: 'Hashed Authentication',
-        route: '/hashedAuth'
+        name: 'SMS Authentication',
+        route: '/smsAuth/login'
     },
     {
         name: 'Hashed and Salted Authentication',
@@ -32,6 +35,7 @@ app.get('/', (req, res) => {
 
 // Including Routes
 app.use(passAuth)
+app.use(smsAuth)
 
 // Define the port to listen on
 app.listen(8080, () => {

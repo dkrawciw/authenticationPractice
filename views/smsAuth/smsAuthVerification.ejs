@@ -1,0 +1,13 @@
+<%- include('../partials/header') -%>
+
+<main class="container signatureDiv authDiv">
+    <h2 id="authIntro">SMS Authentication</h2>
+    <form action="/smsAuth/verification" method="POST">
+        <label for="phoneNum">Code Given</label>
+        <input type="text" id="phoneNum" class="form-control">
+
+        <button type="submit" class="btn signatureBtn">Sign Up</button>
+    </form>
+</main>
+    
+<%- include('../partials/footer') -%>
