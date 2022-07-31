@@ -1,6 +1,8 @@
 const express = require('express'),
       app = express(),
-      bodyParser = require('body-parser');
+      bodyParser = require('body-parser'),
+      passport = require('passport'),
+      session = require('express-session');
 
 // Pieces necessary to run the server on https
 const fs = require('fs'),
@@ -9,12 +11,20 @@ const fs = require('fs'),
 
 // Connected JS pages
 const passAuth = require('./routes/passAuth.js'),
-      smsAuth = require('./routes/smsAuth.js');
+      smsAuth = require('./routes/smsAuth.js'),
+      googleAuth = require('./routes/googleAuth.js');
 
 // Port values
 const HTTP_PORT = 8080,
       HTTPS_PORT = 8181;
 
+      
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.authenticate('session'));
 
 
 // Placeholder options
@@ -29,8 +39,8 @@ let options = [
         route: '/smsAuth/login'
     },
     {
-        name: 'Hashed and Salted Authentication',
-        route: '/hashedAndSaltedAuth'
+        name: 'Google Authentication',
+        route: '/googleAuth/login'
     },
     {
         name: 'OAuth',
@@ -52,6 +62,7 @@ app.get('/', (req, res) => {
 // Including Routes
 app.use(passAuth)
 app.use(smsAuth)
+app.use(googleAuth)
 
 // Default Loading page
 app.get('/*', (req, res) => {
