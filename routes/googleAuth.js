@@ -5,8 +5,8 @@ const express = require('express'),
 
 // Setting the google google strategy
 passport.use(new GoogleStrategy({
-    clientID: '908353489769-rc9e3c67qsg7f4tjlgpug6g7hb1srkap.apps.googleusercontent.com',
-    clientSecret: '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',
+    clientID: process.env['GOOGLE_CLIENT_ID'],
+    clientSecret: process.env['GOOGLE_CLIENT_SECRET'],
     callbackURL: '/googleAuth/home'
 }, (accessToken, refreshToken, profile, cb) => {
     console.log('yuh')
