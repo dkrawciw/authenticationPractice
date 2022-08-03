@@ -1,52 +1,26 @@
-const express = require('express'),
-      app = express(),
-      bodyParser = require('body-parser'),
-      passport = require('passport'),
-      session = require('express-session');
+const express = require('express');
+const session = require('express-session');
+const app = express();
+const bodyParser = require('body-parser');
+const passport = require('passport');
 
 // Pieces necessary to run the server on https
-const fs = require('fs'),
-      http = require('http'),
-      https = require('https');
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 
 // Connected JS pages
-const passAuth = require('./routes/passAuth.js'),
-      smsAuth = require('./routes/smsAuth.js'),
-      googleAuth = require('./routes/googleAuth.js');
+const passAuth = require('./routes/passAuth.js');
+const smsAuth = require('./routes/smsAuth.js');
+const googleAuth = require('./routes/googleAuth.js');
 
 // Port values
-const HTTP_PORT = 8080,
-      HTTPS_PORT = 8181;
+const HTTP_PORT = 8080;
+const HTTPS_PORT = 8181;
 
-      
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.authenticate('session'));
-
-
-// Placeholder options
-// NOTE: Should probably find a better way to get and send this information
-let options = [
-    {
-        name: 'Password Authentication',
-        route: '/passAuth/login'
-    },
-    {
-        name: 'SMS Authentication',
-        route: '/smsAuth/login'
-    },
-    {
-        name: 'Google Authentication',
-        route: '/googleAuth/login'
-    },
-    {
-        name: 'OAuth',
-        route: '/oauth'
-    }
-]
+// Getting the options for the landing page from a json file
+const authOptionsFile = fs.readFileSync('./public/authOptions.json')
+const authOptions = JSON.parse(authOptionsFile);
 
 // Important middlewares
 app.set('view engine', 'ejs');
@@ -56,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // Landing Page
 app.get('/', (req, res) => {
-    res.render('index.ejs', {options: options})
+    res.render('index.ejs', {options: authOptions})
 })
 
 // Including Routes
@@ -66,15 +40,8 @@ app.use(googleAuth)
 
 // Default Loading page
 app.get('/*', (req, res) => {
-    res.render("defaultPage.ejs")
+    res.render('defaultPage.ejs')
 })
-
-// Define the port to listen on
-/*
-app.listen(8080, () => {
-    console.log('Running Authentication App...')
-})
-*/
 
 // running the server with http
 http.createServer(app)
@@ -87,13 +54,9 @@ http.createServer(app)
 Certificates generated with command:
     openssl req -nodes -new -x509 -keyout server.key -out server.cert
 */
-
-https
-.createServer(
-    {
+https.createServer({
         key: fs.readFileSync('server.key'),
         cert: fs.readFileSync('server.cert')
-    }, app)
-.listen(HTTPS_PORT, () => {
+    }, app).listen(HTTPS_PORT, () => {
     console.log('HTTPS app running on port: ' + HTTPS_PORT)
 })
