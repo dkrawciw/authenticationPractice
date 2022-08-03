@@ -19,8 +19,15 @@ const HTTP_PORT = 8080;
 const HTTPS_PORT = 8181;
 
 // Getting the options for the landing page from a json file
-const authOptionsFile = fs.readFileSync('./public/authOptions.json')
-const authOptions = JSON.parse(authOptionsFile);
+let authOptions;
+try{
+    const authOptionsFile = fs.readFileSync('./public/authOptions.json')
+    authOptions = JSON.parse(authOptionsFile)
+
+} catch(err){
+    console.log(err)
+    authOptions = []
+}
 
 // Important middlewares
 app.set('view engine', 'ejs');
