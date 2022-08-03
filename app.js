@@ -25,7 +25,7 @@ try{
     authOptions = JSON.parse(authOptionsFile)
 
 } catch(err){
-    console.log(err)
+    console.log('Options JSON file not read correctly!')
     authOptions = []
 }
 

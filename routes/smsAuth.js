@@ -1,5 +1,5 @@
-const express = require('express'),
-      router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 router.get('/smsAuth/login', (req, res) => {
     res.render('smsAuth/smsAuthLogin.ejs')
